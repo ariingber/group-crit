@@ -10,11 +10,11 @@ users.post('/', db.createUser, function(req, res){
 
 // users.route('/')
 users.get('/new', function(req, res) {
-  res.render('users/new.html.ejs')
+  res.render('users/new.ejs')
 })
 
 users.get('/login', function(req, res) {
-  res.render('users/login.html.ejs');
+  res.render('users/login.ejs');
 })
 
 users.post('/login', db.loginUser, function(req, res) {
@@ -35,20 +35,5 @@ users.delete('/logout', function(req, res) {
     res.redirect('/');
   })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = users;

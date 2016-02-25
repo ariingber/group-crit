@@ -16,7 +16,7 @@ images.use(function(req, res, next) {
 
 images.route('/')
   .get( (req, res) => {
-    res.render('images/index.html.ejs');
+    res.render('images/index.ejs');
   })
 
 module.exports = images;
