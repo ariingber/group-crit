@@ -40,8 +40,11 @@ app.use(methodOverride('_method'))
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
-app.get('/', function(req, res) {
-  res.render('home.ejs', { user : req.session.user});
+//db.getGroupMembers goes after,
+app.get('/', db.getGroupMembers, function(req, res) {
+  // console.log(req.session.user);
+  res.render('home.ejs', { user : req.session.user, groupMembers: res.groupMembers});
+  // console.log(res.groupMembers)
 })
 
 app.use('/users', userRoutes)
