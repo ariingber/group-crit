@@ -3,5 +3,21 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
        id SERIAL UNIQUE PRIMARY KEY,
        email VARCHAR(255),
-       password_digest TEXT
+       password_digest TEXT,
+       name VARCHAR(100),
+       groupName VARCHAR(100)
+);
+
+CREATE TABLE works (
+       id SERIAL UNIQUE PRIMARY KEY,
+       userID INTEGER REFERENCES users,
+       imgURL TEXT,
+       name VARCHAR(100)
+);
+
+CREATE TABLE comments (
+      id SERIAL UNIQUE PRIMARY KEY,
+      workId INTEGER REFERENCES works,
+      userId INTEGER REFERENCES users,
+      commentContent VARCHAR (200)
 );
