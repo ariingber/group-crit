@@ -21,7 +21,9 @@
   </div>
 
   <% if (user) {%>
-    <h3>Welcome <%= user.email %></h3>
+    <h3>Welcome <%= user.name %></h3>
+    <h3>Your in a group called <%= user.groupname %></h3>
+    <h3>Other members of this group include <%= user.groupname %></h3>
   <% } %>
 </body>
 </html>

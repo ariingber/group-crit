@@ -1,0 +1,11 @@
+-- BEGIN;
+-- insert into groups ( groupName ) VALUES ('Bowie');
+--
+-- insert into groups ( groupName ) VALUES ('Art Collective');
+--
+--
+-- insert into users ( email, password_digest, name, groupId ) VALUES ('bb@gmail.com', '$2a$10$dfdBq870Oa.MEB2QZwH4w.JHur2WX7/kNseI7p0BpBKxq2S8O8oxq', 'Gertrude',
+--   '1');
+--
+--
+-- COMMIT;

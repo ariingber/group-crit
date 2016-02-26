@@ -7,4 +7,6 @@
 
 ![alt text](wireframes/group-crit-ERD.png)
 
+
+###Wire Frames
 ![alt text](wireframes/group-crit-home.png)
