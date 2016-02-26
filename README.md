@@ -1,7 +1,7 @@
 # group-crit README.md
 
 
-#ERD's
+###ERD's
 
 | group | datatype |
 | :------------- | :-------------|
