@@ -5,7 +5,7 @@ Group Crit is a websites where Artists can go, and upload images of their works 
 
 #Tables
 
-| group |
-| :------------- | :------------- |
+| group | datatype |
+| :------------- | :-------------|
 | groupId        | primary key   |
 | groupName      | varchar(20)   |
