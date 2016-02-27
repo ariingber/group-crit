@@ -26,8 +26,16 @@ users.post('/login', db.loginUser, function(req, res) {
   // the destination page well before we finished sending the response to the client."
 
   req.session.save(function() {
-    res.redirect('/')
+    res.redirect('/users/:id')
   });
+})
+
+users.get('/login', function(req, res) {
+  res.render('users/login.ejs');
+})
+
+users.get('/:id', db.getGroupMembers, function(req, res) {
+  res.render('users/user_profile.ejs', { user : req.session.user, groupMembers: res.groupMembers});
 })
 
 users.delete('/logout', function(req, res) {
