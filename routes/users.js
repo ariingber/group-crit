@@ -26,7 +26,7 @@ users.post('/login', db.loginUser, function(req, res) {
   // the destination page well before we finished sending the response to the client."
 
   req.session.save(function() {
-    res.redirect('/users/:id')
+    res.redirect('/users/:usersID')
   });
 })
 
@@ -34,9 +34,19 @@ users.get('/login', function(req, res) {
   res.render('users/login.ejs');
 })
 
-users.get('/:id', db.getGroupMembers, function(req, res) {
-  res.render('users/user_profile.ejs', { user : req.session.user, groupMembers: res.groupMembers});
+
+users.get('/:usersID', db.getGroupMembers, function(req, res) {
+
+  var userID = req.session.user.id;
+  console.log(userID);
+  res.render('users/user_profile.ejs', { user : req.session.user, groupMembers: res.groupMembers,
+    userID:userID,
+    userURL:'/users/'+userID
+    // userData: userData[userID]
+  });
+  // res.redirect('/users/' + userID)
 })
+
 
 users.delete('/logout', function(req, res) {
   req.session.destroy(function(err){

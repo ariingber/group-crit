@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title><%= user.name %></title>
 </head>
 <body>
   <div>
@@ -11,8 +11,8 @@
 
   <% if (user) {%>
     <h3>Welcome <%= user.name %></h3>
-    <h3>Your in a group called <%= user.groupname %></h3>
-    <h3>Loop goes here</h3>
+    <h3><a href="#">Check out other <%= user.groupname %> recent works</a></h3>
+    <a href="/">home</a>
   <% } %>
 </body>
 </html>
