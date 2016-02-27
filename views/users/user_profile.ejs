@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <a href="/images">images</a>
+  </div>
+
+  <% if (user) {%>
+    <h3>Welcome <%= user.name %></h3>
+    <h3>Your in a group called <%= user.groupname %></h3>
+    <h3>Loop goes here</h3>
+  <% } %>
+</body>
+</html>
