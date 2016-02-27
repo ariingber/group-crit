@@ -34,11 +34,12 @@ users.get('/login', function(req, res) {
   res.render('users/login.ejs');
 })
 
+// users.get('/:usersID', db.getGroupMembers, function(req, res)
 
-users.get('/:usersID', db.getGroupMembers, function(req, res) {
+users.get('/:usersID', db.getWorks, function(req, res) {
 
   var userID = req.session.user.id;
-  res.render('users/user_profile.ejs', { user : req.session.user, groupMembers: res.groupMembers,
+  res.render('users/user_profile.ejs', { user : req.session.user, artistsWorks: res.artistsWorks,
     userID:userID,
     userURL:'/users/'+userID,
     userData: req.session.user
