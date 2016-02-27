@@ -84,41 +84,11 @@ function getGroupMembers(req, res, next) {
       if(err) {
         return console.error('error, running query', err);
       }
-      console.log(results.rows)
       res.groupMembers = results.rows
       next()
     });
   });
 }
-
-
-// function getGroupMembers(req, res, next)
-// {
-//
-//     pg.connect(connectionString, function(err, client, done) {
-//       if (err) {
-//         done()
-//         console.log(err)
-//         return res.status(500).json({success: false, data: err})
-//       }
-//
-//       var query = client.query("SELECT * FROM users WHERE groupname =  users.groupname", [email], function(err, results) {
-//
-//         done()
-//         if (err) {
-//           return console.error('error running query', err)
-//         }
-//
-//         if (results.rows.length === 0) {
-//           res.status(204).json({success: true, data: 'no content'})
-//         } else {
-//           res.groupMembers = results.rows
-//           next()
-//         }
-//
-//       })
-//     })
-// }
 
 
 module.exports.getGroupMembers = getGroupMembers;
