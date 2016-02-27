@@ -16,12 +16,13 @@
       <button>logout</button>
     </form>
   </div>
-  <div>
-    <a href="/images">images</a>
-  </div>
 
   <% if (user) {%>
     <h3><%= user.name %> you are logged in.</h3>
+  <% } %>
+
+  <% if (user) {%>
+    <h3><a href= <%= "/users/" + user.id %> >Go to your page</a></h3>
   <% } %>
 </body>
 </html>

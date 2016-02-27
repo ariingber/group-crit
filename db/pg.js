@@ -90,7 +90,30 @@ function getGroupMembers(req, res, next) {
   });
 }
 
+function getWorks(req, res, next) {
+  // Get a Postgres client from the connection pool
+  pg.connect(connectionString, function(err, client, done) {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({ success: false, data: err});
+    }
 
+    var query = client.query("SELECT imgurl FROM works where userId = "+ req.session.user.id + ";", function(err, results) {
+      done()
+      if(err) {
+        return console.error('error, running query', err);
+      }
+      res.artistsWorks = results.rows
+      console.log(res.artistsWorks);
+      next()
+    });
+  });
+}
+
+
+module.exports.getWorks = getWorks;
 module.exports.getGroupMembers = getGroupMembers;
 module.exports.createUser = createUser;
 module.exports.loginUser = loginUser;

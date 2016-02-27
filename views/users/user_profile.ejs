@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title><%= user.name %></title>
-</head>
-<body>
-  <div class="profilePic">
-    <img src=<%= user.img_url %>>
-  </div>
+  <head>
+    <%- include ../partials/head %>
+  </head>
+​
+  <body>
+​
+    <header>
+      <%- include ../partials/nav %>
+    </header>
 
+  <div id="ProfilePicture">
+    <img src ="https://image.freepik.com/free-icon/male-user-shadow_318-34042.png">
+    <!-- <img src=<%= user.img_url %>> -->
+  </div>
+  <h3>Welcome <%= user.name %></h3>
   <% if (user) {%>
-    <h3>Welcome <%= user.name %></h3>
-    <h3><a href="#">Check out other <%= user.groupname %> recent works</a></h3>
-    <a href="/">home</a>
+  <div id="ImageContainer"><% artistsWorks.forEach(function(work) { %>
+    <% for (var imgurl in work) { %>
+      <img src =<%= work[imgurl] %>>
+    <% } %><% }) %>
+  </div>
   <% } %>
+  <h3><a href="#">Check out other <%= user.groupname %> recent works</a></h3>
+
+  <%- include ../partials/footer %>
 </body>
 </html>
