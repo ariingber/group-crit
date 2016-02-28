@@ -1,7 +1,35 @@
+body {
+  font-family: 'Arimo', sans-serif;
+}
+
+#ProfileHeading {
+  width: 150px;
+  padding: 1px;
+
+}
+
+#UserName {
+  margin-top: -5px;
+  text-align: center;
+}
 #ProfilePicture img {
     width: 150px;
+    padding: 1px;
 }
 
 #ImageContainer img {
+    height:200px;
     width: 150px;
+    border: solid black 1px;
+    padding: 1px;
+}
+
+#MainContainer {
+  text-align: center;
+}
+
+#WorkRender img {
+    max-width: 250px;
+    border: solid black 1px;
+    padding: 1px;
 }

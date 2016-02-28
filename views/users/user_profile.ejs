@@ -9,20 +9,25 @@
     <header>
       <%- include ../partials/nav %>
     </header>
-
-  <div id="ProfilePicture">
-    <img src ="https://image.freepik.com/free-icon/male-user-shadow_318-34042.png">
-    <!-- <img src=<%= user.img_url %>> -->
+  <div id="ProfileHeading">
+    <div id="ProfilePicture">
+      <img src=<%= user.img_url %>>
+      <h2 id= "UserName"><%= user.name %></h2>
+    </div>
   </div>
-  <h3>Welcome <%= user.name %></h3>
+
   <% if (user) {%>
   <div id="ImageContainer"><% artistsWorks.forEach(function(work) { %>
-    <% for (var imgurl in work) { %>
-      <img src =<%= work[imgurl] %>>
-    <% } %><% }) %>
+      <a href="/work/<%= work.id %>"><img src =<%= work.imgurl %>></a>
+    <% }) %>
   </div>
   <% } %>
   <h3><a href="#">Check out other <%= user.groupname %> recent works</a></h3>
+  <div>
+    <form method="post" action="/users/logout?_method=DELETE">
+      <button>logout</button>
+    </form>
+  </div>
 
   <%- include ../partials/footer %>
 </body>

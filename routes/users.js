@@ -37,7 +37,7 @@ users.get('/login', function(req, res) {
 // users.get('/:usersID', db.getGroupMembers, function(req, res)
 
 users.get('/:usersID', db.getWorks, function(req, res) {
-
+console.log(res.artistsWorks)
   var userID = req.session.user.id;
   res.render('users/user_profile.ejs', { user : req.session.user, artistsWorks: res.artistsWorks,
     userID:userID,

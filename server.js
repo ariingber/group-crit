@@ -16,8 +16,8 @@ var db = require('./db/pg');
 var app = express();
 
 var userRoutes = require( path.join(__dirname, '/routes/users'));
+var workRoutes = require( path.join(__dirname, '/routes/work'));
 var imageRoutes = require( path.join(__dirname, '/routes/images'));
-// var burgerRoutes = require( path.join(__dirname, '/routes/burgers'));
 
 app.use(session({
   store: new pgSession({
@@ -51,6 +51,7 @@ app.get('/', db.getGroupMembers, function(req, res) {
 
 app.use('/users', userRoutes)
 app.use('/images', imageRoutes)
+app.use('/work', workRoutes)
 
 
 
