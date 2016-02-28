@@ -44,10 +44,8 @@ app.set('views', './views')
 app.set('view engine', 'ejs')
 
 //db.getGroupMembers goes after,
-app.get('/', db.getGroupMembers, function(req, res) {
-  // console.log(req.session.user);
-  res.render('home.ejs', { user : req.session.user, groupMembers: res.groupMembers});
-  // console.log(res.groupMembers)
+app.get('/', function(req, res) {
+  res.render('home.ejs', { user : req.session.user});
 })
 
 app.use('/users', userRoutes)

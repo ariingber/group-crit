@@ -8,10 +8,10 @@ var db = require('./../db/pg');
 //   });
 // })
 
-group.get('/', function(req, res) {
-  res.send('hello');
+group.get('/', db.getGroupMembers, function(req, res) {
+  res.render('./group_profile.ejs', { groupMembers: res.groupMembers
+  });
 })
-
 
 
 module.exports = group;
