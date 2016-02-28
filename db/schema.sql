@@ -5,7 +5,7 @@ CREATE TABLE users (
        password_digest TEXT,
        name VARCHAR(100),
        groupName VARCHAR(100),
-       img_url TEXT
+       img_url TEXT DEFAULT 'https://image.freepik.com/free-icon/male-user-shadow_318-34042.png'
 );
 
 CREATE TABLE works (
