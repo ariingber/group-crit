@@ -2,6 +2,11 @@ body {
   font-family: 'Arimo', sans-serif;
 }
 
+h1 {
+  text-align: center;
+  font-size: 130px;
+}
+
 #ProfileHeading {
   width: 150px;
   padding: 1px;
@@ -32,4 +37,28 @@ body {
     max-width: 250px;
     border: solid black 1px;
     padding: 1px;
+}
+
+#HomeLinks {
+  margin-top: -20px;
+  text-align: center;
+}
+
+#logout {
+  text-decoration: none;
+  font-size: 25px;
+  display: inline;
+}
+
+li {
+  list-style: none;
+  display: inline;
+
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+  font-size: 40px;
+  padding: 50px;
 }
