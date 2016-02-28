@@ -4,7 +4,7 @@
     <%- include ./partials/head %>
   </head>
 <body>
-<h3>Group Profile</h3>
+<h1><%= groupMembers[0].groupname %></h1>
 
 <div id="ImageContainer"><%
   name = '';
@@ -15,6 +15,11 @@
     <h3><%= member.worksname %></h3>
     <a href="/work/<%= member.worksid %>"><img src =<%= member.imgurl %>></a><br />
   <% }) %>
+</div>
+<div>
+  <form method="post" action="/users/logout?_method=DELETE">
+    <button>logout</button>
+  </form>
 </div>
 
 
