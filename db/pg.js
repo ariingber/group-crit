@@ -78,7 +78,7 @@ function getGroupMembers(req, res, next) {
       console.log(err);
       return res.status(500).json({ success: false, data: err});
     }
-    var query = client.query("SELECT users.name, users.img_url, works.imgurl FROM works left join users ON works.userid = users.id WHERE users.groupname = 'Turtles';", function(err, results) {
+    var query = client.query("SELECT users.name, works.id as worksid, works.name as worksname, works.imgurl FROM works left join users ON works.userid = users.id WHERE users.groupname = 'Turtles';", function(err, results) {
       done()
       if(err) {
         return console.error('error, running query', err);
