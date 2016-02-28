@@ -13,6 +13,7 @@
     <div id="MainContainer">
       <div id="WorkRender">
         <img src =<%= workToRender[0].imgurl %>>
+        <p> <%= renderComment[0].commentcontent %> </p>
       </div>
 
       <div>
@@ -21,6 +22,13 @@
         </form>
       </div>
     </div>
+
+    <form method='post'>
+      Comment:<br />
+    <textarea name='comment' id='comment'></textarea><br />
+    <input type='hidden' name='userID' id='userID' value= "idgohere" />
+    <input type='submit' value='Submit' />
+  </form>
 
       <%- include ../partials/footer %>
   </body>

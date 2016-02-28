@@ -130,6 +130,49 @@ function renderWork(req, res, next) {
   });
 }
 
+function addComment(req, res, next) {
+  // Get a Postgres client from the connection pool
+  pg.connect(connectionString, function(err, client, done) {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({ success: false, data: err});
+    }
+    var query = client.query("INSERT INTO comments (workId, userId, commentContent) VALUES ($1, $2, $3);", [ req.params.workID, req.session.user.id, req.body.comment], function(err, results) {
+      done()
+      if(err) {
+        return console.error('error, running query', err);
+      }
+      res.addComment = results.rows
+      next()
+    });
+  });
+}
+
+function renderComment(req, res, next) {
+  // Get a Postgres client from the connection pool
+  pg.connect(connectionString, function(err, client, done) {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({ success: false, data: err});
+    }
+    
+    var query = client.query("SELECT * FROM comments where workId = "+ req.params.workID + ";", function(err, results) {
+      done()
+      if(err) {
+        return console.error('error, running query', err);
+      }
+      res.renderComment = results.rows
+      next()
+    });
+  });
+}
+
+module.exports.renderComment = renderComment;
+module.exports.addComment = addComment;
 module.exports.renderWork = renderWork;
 module.exports.getWorks = getWorks;
 module.exports.getGroupMembers = getGroupMembers;
