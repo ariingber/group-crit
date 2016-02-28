@@ -4,8 +4,19 @@
     <%- include ./partials/head %>
   </head>
 <body>
-<h1>Group Profile</h1>
-<h1><%= groupMembers[0].name %></h1>
+<h3>Group Profile</h3>
+
+<div id="ImageContainer"><%
+  name = '';
+  groupMembers.forEach(function(member) {
+    if (name !== member.name) { %>
+    <h3><%= member.name %></h3>
+  <% name = member.name } %>
+    <h3><%= member.worksname %></h3>
+    <a href="/work/<%= member.worksid %>"><img src =<%= member.imgurl %>></a><br />
+  <% }) %>
+</div>
+
 
 <%- include ./partials/footer %>
 </body>
