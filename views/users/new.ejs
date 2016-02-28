@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>sign up!</title>
-</head>
+  <head>
+    <%- include ../partials/head %>
+  </head>
 <body>
-<h1>Sign Up page!</h1>
+<h1>Sign Up Page</h1>
 <form action="/users" method="post">
   <div>
     <label for="email">email</label>
@@ -21,7 +20,7 @@
     <label for="name">your name</label>
     <input type="text" name="name">
   </div>
-  
+
   <div>
     <label for="groupName">group name</label>
     <input type="text" name="groupName">
@@ -29,5 +28,6 @@
 
   <input type="submit" value="SuBMit">
 </form>
+<%- include ../partials/footer %>
 </body>
 </html>

@@ -1,3 +1,4 @@
+DROP TABLE if EXISTS comments, works, users CASCADE;
 
 CREATE TABLE users (
        id SERIAL UNIQUE PRIMARY KEY,

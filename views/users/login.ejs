@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
+  <head>
+    <%- include ../partials/head %>
+  </head>
 <body>
   <form action="/users/login" method="post">
     <div>
@@ -15,11 +14,12 @@
       <label for="password">password</label>
       <input type="text" name="password">
     </div>
-    
+
 
 
     <input type="submit" value="Submit">
   </form>
 
-</body>
-</html>
+  <%- include ../partials/footer %>
+  </body>
+  </html>
