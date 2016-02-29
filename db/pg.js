@@ -192,6 +192,33 @@ function renderComment(req, res, next) {
   });
 }
 
+function updateComment (req, res, next) {
+  // Get a Postgres client from the connection pool
+  pg.connect(connectionString, function(err, client, done) {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({ success: false, data: err});
+    }
+
+    var query = client.query( 'UPDATE comments SET commentContent = ($1) where id = ($2);',
+      [req.body.comment, req.body.commentID]
+
+      , function(err, results) {
+      done()
+      if(err) {
+        return console.error('error, running query', err);
+      }
+      res.updateComment = results.rows
+      next()
+    });
+  });
+}
+
+
+
+module.exports.updateComment = updateComment;
 module.exports.getWorkID = getWorkID;
 module.exports.renderComment = renderComment;
 module.exports.addComment = addComment;
