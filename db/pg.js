@@ -1,13 +1,9 @@
 var pg = require('pg');
+var connectionString = 'postgres://ariingber:Freedom77!@localhost/group_crit';
 var bcrypt = require('bcrypt');
 var salt = bcrypt.genSaltSync(10);
 var session = require('express-session');
 
-if (process.NODE_ENV === 'production') {
-  var connectionString = process.env.DATABASE_URL;
-} else {
-  var connectionString = process.env.MY_DATABASE;
-}
 
 function loginUser(req, res, next) {
     var email = req.body.email;

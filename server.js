@@ -5,22 +5,16 @@ var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var pg = require('pg');
-var dotenv = require ('dotenv');
+var connectionString = 'postgres://ariingber:Freedom77!@localhost/group_crit';
 var session = require('express-session');
 var pgSession = require('connect-pg-simple')(session);
 var path = require('path');
 var methodOverride = require('method-override');
-
+var dotenv = require('dotenv');
 
 
 var db = require('./db/pg');
 var app = express();
-
-if (process.NODE_ENV === 'production') {
-  var connectionString = process.env.DATABASE_URL;
-} else {
-  var connectionString = process.env.MY_DATABASE;
-}
 
 var userRoutes = require( path.join(__dirname, '/routes/users'));
 var workRoutes = require( path.join(__dirname, '/routes/work'));
