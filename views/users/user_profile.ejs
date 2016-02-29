@@ -9,12 +9,11 @@
     <header>
       <%- include ../partials/nav %>
     </header>
-  <div id="ProfileHeading">
+
     <div id="ProfilePicture">
       <img src=<%= user.img_url %>>
       <h2 id= "UserName"><%= user.name %></h2>
     </div>
-  </div>
 
   <% if (user) {%>
   <div id="ImageContainer"><% artistsWorks.forEach(function(work) { %>
@@ -22,13 +21,7 @@
     <% }) %>
   </div>
   <% } %>
-  <h3><a href="/group/">Check on the other <%= user.groupname %></a></h3>
-
-  <div>
-    <form method="post" action="/users/logout?_method=DELETE">
-      <button>logout</button>
-    </form>
-  </div>
+  
 
   <%- include ../partials/footer %>
 </body>

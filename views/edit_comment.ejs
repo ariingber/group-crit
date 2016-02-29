@@ -1,7 +1,8 @@
 <form action = "/work/<%=workID%>?_method=PUT" method='post'>
     Comment:<br />
   <textarea name='comment' id='comment'></textarea><br />
-  <input type='hidden' name='userID' id='userID' value= "idgohere" />
+  <p><%= renderComment[0].id %></p>
+  <input type='hidden' name='commentID' id='commentID' value= <%= renderComment[0].id %> />
   <input type='hidden' name='test' id='test' value= "idgohere" />
   <input type='submit' value='Submit' />
 </form>

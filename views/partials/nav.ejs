@@ -1,7 +1,6 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div id="navbar">
-
-    </div><!--/.nav-collapse -->
-  </div>
-</nav>
+<div>
+    <p><a href="/group/">Check on the other <%= user.groupname %></a>
+    <form method="post" action="/users/logout?_method=DELETE">
+        <button>logout</button>
+    </form></p>
+</div>
