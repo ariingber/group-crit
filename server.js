@@ -5,11 +5,14 @@ var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var pg = require('pg');
-var connectionString = "postgres://ariingber:Freedom77!@localhost/group_crit";
+var dotenv = require ('dotenv');
+dotenv.config();
+var connectionString = process.env.DATABASE_URL
 var session = require('express-session');
 var pgSession = require('connect-pg-simple')(session);
 var path = require('path');
 var methodOverride = require('method-override');
+
 
 
 var db = require('./db/pg');
