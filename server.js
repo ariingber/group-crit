@@ -19,6 +19,7 @@ var userRoutes = require( path.join(__dirname, '/routes/users'));
 var workRoutes = require( path.join(__dirname, '/routes/work'));
 var groupRoutes = require( path.join(__dirname, '/routes/group'));
 var imageRoutes = require( path.join(__dirname, '/routes/images'));
+var commentRoutes = require( path.join(__dirname, '/routes/comment'));
 
 app.use(session({
   store: new pgSession({
@@ -52,6 +53,7 @@ app.use('/users', userRoutes)
 app.use('/images', imageRoutes)
 app.use('/work', workRoutes)
 app.use('/group', groupRoutes)
+app.use('/comment', commentRoutes)
 
 
 
