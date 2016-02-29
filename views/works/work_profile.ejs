@@ -13,7 +13,10 @@
     <div id="MainContainer">
       <div id="WorkRender">
         <img src =<%= workToRender[0].imgurl %>>
-        <p> <%= renderComment[0].commentcontent %> </p>
+        <div id="ImageContainer"><% renderComment.forEach(function(comment) { %>
+          <p> <%= comment.name %> : <%= comment.commentcontent %><a href= "/work/<%= workId %>/edit" >|   edit   |</a><a href="#">| delete |</a></p>
+          <% }) %>
+        </div>
       </div>
 
       <div>
@@ -26,7 +29,7 @@
     <form method='post'>
       Comment:<br />
     <textarea name='comment' id='comment'></textarea><br />
-    <input type='hidden' name='userID' id='userID' value= "idgohere" />
+    <input type='hidden' name='commentID' id='commentID' value= "idgohere" />
     <input type='submit' value='Submit' />
   </form>
 
