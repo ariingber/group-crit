@@ -1,15 +1,26 @@
 var pg = require('pg');
-var connectionString = 'postgres://ariingber:Freedom77!@localhost/group_crit';
 var bcrypt = require('bcrypt');
 var salt = bcrypt.genSaltSync(10);
 var session = require('express-session');
+require('dotenv').config();
 
+if(process.NODE_ENV === 'production') {
+  var config = process.env.DATABASE_URL;
+} else {
+  var config = process.env.DATABASE_URL || {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS
+  };
+}
 
 function loginUser(req, res, next) {
     var email = req.body.email;
     var password = req.body.password;
 
-    pg.connect(connectionString, function(err, client, done) {
+    pg.connect(config, function(err, client, done) {
       if (err) {
         done()
         console.log(err)
@@ -50,7 +61,7 @@ function createUser(req, res, next) {
   createSecure(req.body.email, req.body.password, saveUser);
 
   function saveUser(email, hash) {
-    pg.connect(connectionString, function(err, client, done) {
+    pg.connect(config, function(err, client, done) {
       if (err) {
         done()
         console.log(err)
@@ -71,7 +82,7 @@ function createUser(req, res, next) {
 
 function getGroupMembers(req, res, next) {
   // Get a Postgres client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
+  pg.connect(config, function(err, client, done) {
     // Handle connection errors
     if(err) {
       done();
@@ -91,7 +102,7 @@ function getGroupMembers(req, res, next) {
 
 function getWorks(req, res, next) {
   // Get a Postgres client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
+  pg.connect(config, function(err, client, done) {
     // Handle connection errors
     if(err) {
       done();
@@ -112,7 +123,7 @@ function getWorks(req, res, next) {
 
 function renderWork(req, res, next) {
   // Get a Postgres client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
+  pg.connect(config, function(err, client, done) {
     // Handle connection errors
     if(err) {
       done();
@@ -132,7 +143,7 @@ function renderWork(req, res, next) {
 
 function addComment(req, res, next) {
   // Get a Postgres client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
+  pg.connect(config, function(err, client, done) {
     // Handle connection errors
     if(err) {
       done();
@@ -153,7 +164,7 @@ function addComment(req, res, next) {
 
 function getWorkID(req, res, next) {
   // Get a Postgres client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
+  pg.connect(config, function(err, client, done) {
     // Handle connection errors
     if(err) {
       done();
@@ -173,7 +184,7 @@ function getWorkID(req, res, next) {
 
 function renderComment(req, res, next) {
   // Get a Postgres client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
+  pg.connect(config, function(err, client, done) {
     // Handle connection errors
     if(err) {
       done();
@@ -194,7 +205,7 @@ function renderComment(req, res, next) {
 
 function getComment(req, res, next) {
   // Get a Postgres client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
+  pg.connect(config, function(err, client, done) {
     // Handle connection errors
     if(err) {
       done();
@@ -215,7 +226,7 @@ function getComment(req, res, next) {
 
 function updateComment (req, res, next) {
   // Get a Postgres client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
+  pg.connect(config, function(err, client, done) {
     // Handle connection errors
     if(err) {
       done();
@@ -240,7 +251,7 @@ function updateComment (req, res, next) {
 function deleteComment (req, res, next) {
   console.log('Im tryin to delete');
   // Get a Postgres client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
+  pg.connect(config, function(err, client, done) {
     // Handle connection errors
     if(err) {
       done();

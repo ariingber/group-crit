@@ -3,6 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ariingber/group-crit.git"
+  },
+  "author": "Ari Ingber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ariingber/group-crit/issues"
+  },
+  "homepage": "https://github.com/ariingber/group-crit#readme",
   "dependencies": {
     "bcrypt": "^0.8.5",
     "body-parser": "^1.15.0",
@@ -16,21 +30,7 @@
     "path": "^0.12.7",
     "pg": "^4.5.1",
     "pryjs": "^0.1.3",
-    "request": "^2.69.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ariingber/group-crit.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ariingber/group-crit/issues"
-  },
-  "homepage": "https://github.com/ariingber/group-crit#readme"
+    "request": "^2.69.0",
+    "start": "^4.0.1"
+  }
 }
