@@ -22,7 +22,7 @@
 
   <% if (user) {%>
   <div id="ImageContainer"><% artistsWorks.forEach(function(work) { %>
-      <a href="/work/<%= work.id %>"><img src =<%= work.imgurl %>></a><br />
+      <a href="/work/<%= work.id %>"><img src =<%= work.imgurl %>></a><br /><br />
     <% }) %>
   </div>
   <% } %>
