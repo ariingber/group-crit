@@ -20,7 +20,7 @@
           <p id = <%= comment.id %>><%= comment.id %> : <%= comment.name %> : <%= comment.commentcontent %>
 
               <% if (comment.name === user.name) { %>
-              <a href= "/work/<%= workId %>/edit" > edit </a><a href="#"> delete </a>
+              <a href= "/comment/<%= comment.id %>/edit" > edit </a><a href="#"> delete </a>
               <% } %>
 
           </p>

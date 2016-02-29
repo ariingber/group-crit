@@ -11,16 +11,10 @@ work.route('/:workID')
     res.redirect('/work/' + req.params.workID)
   })
   .put( db.updateComment, (req,res) => {
-    console.log(req.body)
-    console.log(req.body.comment)
-    console.log(req.body.commentID)
     res.redirect('/work/' + req.params.workID)
 })
 
-work.route('/:workID/edit')
-  .get( db.getWorkID, db.renderComment, (req,res) => {
-    res.render('edit_comment.ejs', { workID: req.params.workID, renderComment: res.renderComment })
-})
+
 
 
 
