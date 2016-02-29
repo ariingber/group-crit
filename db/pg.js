@@ -151,7 +151,7 @@ function addComment(req, res, next) {
   });
 }
 
-function editComment(req, res, next) {
+function getWorkID(req, res, next) {
   // Get a Postgres client from the connection pool
   pg.connect(connectionString, function(err, client, done) {
     // Handle connection errors
@@ -160,12 +160,12 @@ function editComment(req, res, next) {
       console.log(err);
       return res.status(500).json({ success: false, data: err});
     }
-    var query = client.query("INSERT INTO comments (workId, userId, commentContent) VALUES ($1, $2, $3) RETURNING ID;", [ req.params.workID, req.session.user.id, req.body.comment], function(err, results) {
+    var query = client.query("SELECT imgurl FROM works where id = "+ req.params.workID + ";", function(err, results) {
       done()
       if(err) {
         return console.error('error, running query', err);
       }
-      res.editComment = results.rows
+      res.getWorkID = results.rows
       next()
     });
   });
@@ -192,7 +192,7 @@ function renderComment(req, res, next) {
   });
 }
 
-module.exports.editComment = editComment;
+module.exports.getWorkID = getWorkID;
 module.exports.renderComment = renderComment;
 module.exports.addComment = addComment;
 module.exports.renderWork = renderWork;

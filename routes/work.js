@@ -16,8 +16,8 @@ work.route('/:workID')
 })
 
 work.route('/:workID/edit')
-  .get( db.editComment, (req,res) => {
-    res.render('edit_comment.ejs', { workID: req.params.workID })
+  .get( db.getWorkID, db.renderComment, (req,res) => {
+    res.render('edit_comment.ejs', { workID: req.params.workID, renderComment: res.renderComment })
 })
 
 
