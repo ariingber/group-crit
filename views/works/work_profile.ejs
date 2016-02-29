@@ -20,13 +20,17 @@
           <p id = <%= comment.id %>><%= comment.id %> : <%= comment.name %> : <%= comment.commentcontent %>
 
               <% if (comment.name === user.name) { %>
-              <a href= "/comment/<%= comment.id %>/edit" > edit </a><a href="#"> delete </a>
+              <a href= "/comment/<%= comment.id %>/edit"> edit </a>
+                <form method="post" action="/comment/<%=comment.id%>?_method=DELETE">
+                  <button>delete</button>
+                </form>
               <% } %>
 
           </p>
           <% }) %>
         </div>
       </div>
+
 
       <div>
         <form method="post" action="/users/logout?_method=DELETE">
