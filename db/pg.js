@@ -237,7 +237,30 @@ function updateComment (req, res, next) {
   });
 }
 
+function deleteComment (req, res, next) {
+  console.log('Im tryin to delete');
+  // Get a Postgres client from the connection pool
+  pg.connect(connectionString, function(err, client, done) {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({ success: false, data: err});
+    }
 
+    console.log(req.body.commentID);
+    var query = client.query( "DELETE FROM comments WHERE id = $1", [req.params.commentID], function(err, results) {
+      done()
+      if(err) {
+        return console.error('error, running query', err);
+      }
+      res.deleteComment = results.rows
+      next()
+    });
+  });
+}
+
+module.exports.deleteComment = deleteComment;
 module.exports.getComment = getComment;
 module.exports.updateComment = updateComment;
 module.exports.getWorkID = getWorkID;
