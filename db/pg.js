@@ -159,8 +159,8 @@ function renderComment(req, res, next) {
       console.log(err);
       return res.status(500).json({ success: false, data: err});
     }
-    
-    var query = client.query("SELECT * FROM comments where workId = "+ req.params.workID + ";", function(err, results) {
+
+    var query = client.query("SELECT users.name, comments.commentContent, comments.id FROM comments left join users ON comments.userid = users.id where comments.workId = "+ req.params.workID + ";", function(err, results) {
       done()
       if(err) {
         return console.error('error, running query', err);
@@ -171,6 +171,29 @@ function renderComment(req, res, next) {
   });
 }
 
+// function editComment(req, res, next) {
+//   // Get a Postgres client from the connection pool
+//   pg.connect(connectionString, function(err, client, done) {
+//     // Handle connection errors
+//     if(err) {
+//       done();
+//       console.log(err);
+//       return res.status(500).json({ success: false, data: err});
+//     }
+//
+//
+//     var query = client.query("UPDATE comments SET comments.commentContent = ($1) where ;", [emotion_id, activity_id, req.session.user.profile_id], function(err, results) {
+//       done()
+//       if(err) {
+//         return console.error('error, running query', err);
+//       }
+//       res.renderComment = results.rows
+//       next()
+//     });
+//   });
+// }
+
+// module.exports.editComment = editComment;
 module.exports.renderComment = renderComment;
 module.exports.addComment = addComment;
 module.exports.renderWork = renderWork;
