@@ -7,21 +7,26 @@
   <body>
 ​
     <header>
-      <%- include ../partials/nav %>
+      <div>
+          <a id="checkgroup" href="/group/"><%= user.groupname %></a>
+          <form method="post" action="/users/logout?_method=DELETE">
+              <button>logout</button>
+          </form>
+      </div>
     </header>
 
     <div id="ProfilePicture">
       <img src=<%= user.img_url %>>
-      <h2 id= "UserName"><%= user.name %></h2>
+      <h1 id= "UserName"><%= user.name %></h1>
     </div>
 
   <% if (user) {%>
   <div id="ImageContainer"><% artistsWorks.forEach(function(work) { %>
-      <a href="/work/<%= work.id %>"><img src =<%= work.imgurl %>></a>
+      <a href="/work/<%= work.id %>"><img src =<%= work.imgurl %>></a><br />
     <% }) %>
   </div>
   <% } %>
-  
+
 
   <%- include ../partials/footer %>
 </body>
