@@ -7,17 +7,18 @@
 
 <h2 id="groupname"><%= groupMembers[0].groupname %></h2><br />
 
-<div id="ImageContainer"><%
-  name = '';
-  groupMembers.forEach(function(member) {
-    if (name !== member.name) { %>
-    <h3 id="memname"><%= member.name %></h3>
-  <% name = member.name } %>
-    <h3><%= member.worksname %></h3>
-    <a href="/work/<%= member.worksid %>"><img src =<%= member.imgurl %>></a><br />
-  <% }) %>
+  <div id="ImageContainer"><%
+    name = '';
+    groupMembers.forEach(function(member) {
+      if (name !== member.name) { %>
+      <h3 id="memname"><%= member.name %></h3>
+    <% name = member.name } %>
+      <h3><%= member.worksname %></h3>
+      <a href="/work/<%= member.worksid %>"><img src =<%= member.imgurl %>></a><br />
+    <% }) %>
+  </div>
 </div>
-<div>
+
   <form method="post" action="/users/logout?_method=DELETE">
     <button>logout</button>
   </form>

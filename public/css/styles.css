@@ -8,8 +8,10 @@ h1 {
   font-size: 130px;
 }
 
+
 #groupname {
   font-size: 55px;
+  text-decoration: underline;
 }
 
 #memname {
