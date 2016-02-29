@@ -13,7 +13,6 @@ var db = require('./db/pg');
 var userRoutes = require( path.join(__dirname, '/routes/users'));
 var workRoutes = require( path.join(__dirname, '/routes/work'));
 var groupRoutes = require( path.join(__dirname, '/routes/group'));
-var imageRoutes = require( path.join(__dirname, '/routes/images'));
 var commentRoutes = require( path.join(__dirname, '/routes/comment'));
 require('dotenv').config();
 
