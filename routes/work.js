@@ -10,8 +10,10 @@ work.route('/:workID')
   .post( db.addComment, (req,res) => {
     res.redirect('/work/' + req.params.workID)
   })
-  .put( (req,res) => {
+  .put( db.updateComment, (req,res) => {
     console.log(req.body)
+    console.log(req.body.comment)
+    console.log(req.body.commentID)
     res.redirect('/work/' + req.params.workID)
 })
 
