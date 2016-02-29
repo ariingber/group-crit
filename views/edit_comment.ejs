@@ -1,7 +1,6 @@
 <form action = "/comment/<%=commentID%>/?_method=PUT" method='post'>
-    Comment:<br />
+    Edit Comment:<br />
   <textarea name='comment' id='comment'></textarea><br />
-  <p><%= getComment[0].id %></p>
   <input type='hidden' name='commentID' id='commentID' value= <%= getComment[0].id %> />
   <input type='submit' value='Submit' />
 </form>

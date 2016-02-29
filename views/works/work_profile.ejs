@@ -8,15 +8,14 @@
 ​
     <header>
       <%- include ../partials/nav %>
-    </header>
+    </header><br /><br />
 
-<p>users name: <%= user.name %></p>
+<!-- <p>users name: <%= user.name %></p> -->
 
-    <div id="MainContainer">
-      <div id="WorkRender">
-        <img src =<%= workToRender[0].imgurl %>>
+
+        <img src =<%= workToRender[0].imgurl %>><br />
         <div id="ImageContainer"><% renderComment.forEach(function(comment) { %>
-          <p id = <%= comment.id %>><%= comment.id %> : <%= comment.name %> : <%= comment.commentcontent %>
+          <p id = <%= comment.id %>><%= comment.name %> : <%= comment.commentcontent %>
 
               <% if (comment.name === user.name) { %>
               <a href= "/comment/<%= comment.id %>/edit"> edit </a>
@@ -28,8 +27,6 @@
           </p>
           <% }) %>
         </div>
-      </div>
-    </div>
 
     <form method='post'>
       Comment:<br />
