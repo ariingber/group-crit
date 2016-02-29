@@ -10,11 +10,22 @@
       <%- include ../partials/nav %>
     </header>
 
+
+
+<p><%= user.id %></p>
+<p><%= user.name %></p>
+
     <div id="MainContainer">
       <div id="WorkRender">
         <img src =<%= workToRender[0].imgurl %>>
         <div id="ImageContainer"><% renderComment.forEach(function(comment) { %>
-          <p> <%= comment.name %> : <%= comment.commentcontent %><a href= "/work/<%= workId %>/edit" >|   edit   |</a><a href="#">| delete |</a></p>
+          <p> <%= comment.id %> : <%= comment.name %> : <%= comment.commentcontent %>
+
+              <% if (comment.name === user.name) { %>
+              <a href= "/work/<%= workId %>/edit" >|   edit   |</a><a href="#">| delete |</a>
+              <% } %>
+            
+          </p>
           <% }) %>
         </div>
       </div>

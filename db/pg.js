@@ -139,12 +139,33 @@ function addComment(req, res, next) {
       console.log(err);
       return res.status(500).json({ success: false, data: err});
     }
-    var query = client.query("INSERT INTO comments (workId, userId, commentContent) VALUES ($1, $2, $3);", [ req.params.workID, req.session.user.id, req.body.comment], function(err, results) {
+    var query = client.query("INSERT INTO comments (workId, userId, commentContent) VALUES ($1, $2, $3) RETURNING ID;", [ req.params.workID, req.session.user.id, req.body.comment], function(err, results) {
       done()
       if(err) {
         return console.error('error, running query', err);
       }
       res.addComment = results.rows
+      res.commentID = results.rows[0].id
+      next()
+    });
+  });
+}
+
+function editComment(req, res, next) {
+  // Get a Postgres client from the connection pool
+  pg.connect(connectionString, function(err, client, done) {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({ success: false, data: err});
+    }
+    var query = client.query("INSERT INTO comments (workId, userId, commentContent) VALUES ($1, $2, $3) RETURNING ID;", [ req.params.workID, req.session.user.id, req.body.comment], function(err, results) {
+      done()
+      if(err) {
+        return console.error('error, running query', err);
+      }
+      res.editComment = results.rows
       next()
     });
   });
@@ -171,29 +192,7 @@ function renderComment(req, res, next) {
   });
 }
 
-// function editComment(req, res, next) {
-//   // Get a Postgres client from the connection pool
-//   pg.connect(connectionString, function(err, client, done) {
-//     // Handle connection errors
-//     if(err) {
-//       done();
-//       console.log(err);
-//       return res.status(500).json({ success: false, data: err});
-//     }
-//
-//
-//     var query = client.query("UPDATE comments SET comments.commentContent = ($1) where ;", [emotion_id, activity_id, req.session.user.profile_id], function(err, results) {
-//       done()
-//       if(err) {
-//         return console.error('error, running query', err);
-//       }
-//       res.renderComment = results.rows
-//       next()
-//     });
-//   });
-// }
-
-// module.exports.editComment = editComment;
+module.exports.editComment = editComment;
 module.exports.renderComment = renderComment;
 module.exports.addComment = addComment;
 module.exports.renderWork = renderWork;
