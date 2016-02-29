@@ -5,18 +5,18 @@ var db = require('./../db/pg');
 
 work.route('/:workID')
   .get( db.renderWork, db.renderComment, (req, res)=> {
-  res.render('works/work_profile.ejs', { workId: req.params.workID, workToRender: res.workToRender, renderComment: res.renderComment })
+  res.render('works/work_profile.ejs', { user : req.session.user, workId: req.params.workID, workToRender: res.workToRender, renderComment: res.renderComment })
 })
   .post( db.addComment, (req,res) => {
     res.redirect('/work/' + req.params.workID)
   })
   .put( (req,res) => {
-    console.log('hello')
+    console.log(req.body)
     res.redirect('/work/' + req.params.workID)
 })
 
 work.route('/:workID/edit')
-  .get((req,res) => {
+  .get( db.editComment, (req,res) => {
     res.render('edit_comment.ejs', { workID: req.params.workID })
 })
 
