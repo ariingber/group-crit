@@ -60,7 +60,6 @@ app.get('/', function(req, res) {
 })
 
 app.use('/users', userRoutes)
-app.use('/images', imageRoutes)
 app.use('/work', workRoutes)
 app.use('/group', groupRoutes)
 app.use('/comment', commentRoutes)
