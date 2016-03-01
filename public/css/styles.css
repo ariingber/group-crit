@@ -6,8 +6,14 @@ body {
 h1 {
   text-align: center;
   font-size: 130px;
+  margin-bottom: -20px;
 }
 
+#bug{
+  margin-top: 105px;
+  margin-bottom: -155px;
+  margin-left: 400px;
+}
 
 #groupname {
   font-size: 55px;
